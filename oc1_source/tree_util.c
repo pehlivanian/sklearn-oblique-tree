@@ -112,7 +112,7 @@ read_subtree(root,dtree)
     }
   else cur_node = read_hp(dtree);
   
-  if (cur_node == NULL) return;
+  if (cur_node == NULL) return NULL;
   if (isleftchild(cur_node,root))
     {
       cur_node->parent = root;
@@ -126,7 +126,7 @@ read_subtree(root,dtree)
 	}
       else
 	cur_node = read_hp(dtree);
-      if (cur_node == NULL) return;
+      if (cur_node == NULL) return NULL;
     }
 
   if (isrightchild(cur_node,root))
@@ -380,7 +380,7 @@ write_subtree(cur_node,dtree)
      struct tree_node *cur_node;
      FILE *dtree;
 {
-  if (cur_node == NULL) return;
+  if (cur_node == NULL) return NULL;
   
   write_hp(cur_node,dtree);
   write_subtree(cur_node->left,dtree);
@@ -408,7 +408,7 @@ write_hp(cur_node,dtree)
 {
   int i;
   
-  if (dtree == NULL) return;
+  if (dtree == NULL) return NULL;
   
   if (strcmp(cur_node->label,"\0") == 0)
     fprintf(dtree, "Root Hyperplane: ");
@@ -452,7 +452,7 @@ write_header(dtree)
   extern int no_of_dimensions,no_of_categories;
   extern char train_data[LINESIZE];
   
-  if (dtree == NULL) return;
+  if (dtree == NULL) return NULL;
   
   fprintf(dtree,"Training set: %s, ",train_data);
   fprintf(dtree,"Dimensions: %d, Categories: %d\n",

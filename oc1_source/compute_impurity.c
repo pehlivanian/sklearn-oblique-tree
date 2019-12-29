@@ -55,6 +55,8 @@ double compute_impurity(cur_no_of_points)
 
   for (i=1;i<=no_of_categories;i++) j += left_count[i]+right_count[i];
   
+  // printf("j: %d cur_no_of_points: %d\n", j, cur_no_of_points);
+
   if (j != cur_no_of_points)
     error ("Compute_Impurity: Left_Count and Right_Count not correctly set.");
   
@@ -110,10 +112,16 @@ set_counts(cur_points,cur_no_of_points,flag)
 		 "Set_Counts: Val fields of points are incorrect. Recomputing..\n");
 	 find_values(cur_points,cur_no_of_points);
        }
-     for (i=1;i<=cur_no_of_points;i++)
+     for (i=1;i<=cur_no_of_points;i++) {
+       // printf("i: %d cur_points[i]->val: %d\n", i, cur_points[i]->val);
        if (cur_points[i]->val < 0)
 	 left_count[cur_points[i]->category]++;
        else right_count[cur_points[i]->category]++;
+       //printf("category: %d left_count: %d  right_count: %d\n",
+       //cur_points[i]->category,
+       //     left_count[cur_points[i]->category], 
+       //     right_count[cur_points[i]->category]);
+     }
    }
 }
 
@@ -232,7 +240,7 @@ find_values(cur_points,cur_no_of_points)
 {
   int i,j;
 
-  if (coeff_modified == FALSE) return;
+  if (coeff_modified == FALSE) return NULL;
   for (i=1;i<=cur_no_of_points;i++)
     {
       cur_points[i]->val = coeff_array[no_of_dimensions+1];

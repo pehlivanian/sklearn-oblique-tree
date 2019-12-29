@@ -1,0 +1,129 @@
+In file included from display.c:33:0:
+oc1.h:69:0: warning: "HUGE_VAL" redefined
+ #define HUGE_VAL                FLT_MAX
+ 
+In file included from oc1.h:15:0,
+                 from display.c:33:
+/usr/include/math.h:48:0: note: this is the location of the previous definition
+ # define HUGE_VAL (__builtin_huge_val ())
+ 
+display.c:73:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ main(argc,argv)
+ ^~~~
+display.c: In function ‘main’:
+display.c:92:16: warning: implicit declaration of function ‘getopt’; did you mean ‘getsubopt’? [-Wimplicit-function-declaration]
+   while ((c1 = getopt (argc, argv, "d:D:eh:o:t:T:vw:x:X:y:Y:")) != EOF)
+                ^~~~~~
+                getsubopt
+display.c:114:26: warning: implicit declaration of function ‘usage’ [-Wimplicit-function-declaration]
+  if (strlen(point_file)) usage(pname);
+                          ^~~~~
+display.c:171:3: warning: implicit declaration of function ‘prepare_ps’ [-Wimplicit-function-declaration]
+   prepare_ps(psfile,title);
+   ^~~~~~~~~~
+display.c:172:3: warning: implicit declaration of function ‘set_extremes’ [-Wimplicit-function-declaration]
+   set_extremes(psfile);
+   ^~~~~~~~~~~~
+display.c:173:3: warning: implicit declaration of function ‘make_box’; did you mean ‘makedev’? [-Wimplicit-function-declaration]
+   make_box();
+   ^~~~~~~~
+   makedev
+display.c:177:7: warning: implicit declaration of function ‘display_point’ [-Wimplicit-function-declaration]
+       display_point(psfile,train_points[i]);
+       ^~~~~~~~~~~~~
+display.c:193:3: warning: implicit declaration of function ‘finish_ps’ [-Wimplicit-function-declaration]
+   finish_ps(psfile);
+   ^~~~~~~~~
+display.c: At top level:
+display.c:207:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ set_extremes(psfile)
+ ^~~~~~~~~~~~
+display.c: In function ‘set_extremes’:
+display.c:213:27: warning: ‘return’ with no value, in function returning non-void
+   if (no_of_samples == 0) return;
+                           ^~~~~~
+display.c:207:1: note: declared here
+ set_extremes(psfile)
+ ^~~~~~~~~~~~
+display.c: At top level:
+display.c:253:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ display_point(psfile,p)
+ ^~~~~~~~~~~~~
+display.c:279:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ draw_hyperplane(psfile,cur_node,count)
+ ^~~~~~~~~~~~~~~
+display.c: In function ‘draw_hyperplane’:
+display.c:287:25: warning: ‘return’ with no value, in function returning non-void
+   if (cur_node == NULL) return;
+                         ^~~~~~
+display.c:279:1: note: declared here
+ draw_hyperplane(psfile,cur_node,count)
+ ^~~~~~~~~~~~~~~
+display.c:290:49: warning: ‘return’ with no value, in function returning non-void
+   if (l.from.x == l.to.x && l.from.y == l.to.y) return;
+                                                 ^~~~~~
+display.c:279:1: note: declared here
+ draw_hyperplane(psfile,cur_node,count)
+ ^~~~~~~~~~~~~~~
+display.c:292:5: warning: implicit declaration of function ‘display_edge’; did you mean ‘display_point’? [-Wimplicit-function-declaration]
+     display_edge(psfile,l, "Root",count,0);
+     ^~~~~~~~~~~~
+     display_point
+display.c: At top level:
+display.c:310:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ prepare_ps (psfile,title)
+ ^~~~~~~~~~
+display.c:334:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ finish_ps (psfile)
+ ^~~~~~~~~
+display.c: In function ‘find_edge’:
+display.c:390:19: error: ‘HUGE’ undeclared (first use in this function); did you mean ‘EDGE’?
+       if ( p.x != HUGE && p.y != HUGE
+                   ^~~~
+                   EDGE
+display.c:390:19: note: each undeclared identifier is reported only once for each function it appears in
+display.c: At top level:
+display.c:444:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ make_box()
+ ^~~~~~~~
+display.c:512:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ display_edge (psfile, e, label,count,reverse)
+ ^~~~~~~~~~~~
+display.c:570:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ erase_hyperplane(psfile,cur_node,count)
+ ^~~~~~~~~~~~~~~~
+display.c: In function ‘read_tree’:
+display.c:767:3: warning: implicit declaration of function ‘read_subtree’; did you mean ‘read_tree’? [-Wimplicit-function-declaration]
+   read_subtree(root,dtree);
+   ^~~~~~~~~~~~
+   read_tree
+display.c: At top level:
+display.c:794:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ read_subtree(root,dtree)
+ ^~~~~~~~~~~~
+display.c: In function ‘read_subtree’:
+display.c:808:25: warning: ‘return’ with no value, in function returning non-void
+   if (cur_node == NULL) return;
+                         ^~~~~~
+display.c:794:1: note: declared here
+ read_subtree(root,dtree)
+ ^~~~~~~~~~~~
+display.c:830:29: warning: ‘return’ with no value, in function returning non-void
+       if (cur_node == NULL) return;
+                             ^~~~~~
+display.c:794:1: note: declared here
+ read_subtree(root,dtree)
+ ^~~~~~~~~~~~
+display.c: In function ‘read_perturbations’:
+display.c:875:11: warning: implicit declaration of function ‘psdelay’ [-Wimplicit-function-declaration]
+           psdelay(psfile,wait_time);
+           ^~~~~~~
+display.c: At top level:
+display.c:902:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+ psdelay(out,t)
+ ^~~~~~~
+display.c: In function ‘read_label’:
+display.c:927:9: warning: function returns address of local variable [-Wreturn-local-addr]
+   return(label);
+         ^
+make: *** [display] Error 1

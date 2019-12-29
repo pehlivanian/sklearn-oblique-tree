@@ -1,0 +1,130 @@
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:73:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+main(argc,argv)
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:92:16: warning: implicit declaration of function 'getopt' is invalid in C99 [-Wimplicit-function-declaration]
+  while ((c1 = getopt (argc, argv, "d:D:eh:o:t:T:vw:x:X:y:Y:")) != EOF)
+               ^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:114:26: warning: implicit declaration of function 'usage' is invalid in C99 [-Wimplicit-function-declaration]
+        if (strlen(point_file)) usage(pname);
+                                ^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:134:54: warning: implicit declaration of function 'usage' is invalid in C99 [-Wimplicit-function-declaration]
+  if (!strlen(decision_tree) && !strlen(point_file)) usage(pname);
+                                                     ^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:171:3: warning: implicit declaration of function 'prepare_ps' is invalid in C99 [-Wimplicit-function-declaration]
+  prepare_ps(psfile,title);
+  ^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:172:3: warning: implicit declaration of function 'set_extremes' is invalid in C99 [-Wimplicit-function-declaration]
+  set_extremes(psfile);
+  ^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:173:3: warning: implicit declaration of function 'make_box' is invalid in C99 [-Wimplicit-function-declaration]
+  make_box();
+  ^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:177:7: warning: implicit declaration of function 'display_point' is invalid in C99 [-Wimplicit-function-declaration]
+      display_point(psfile,train_points[i]);
+      ^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:193:3: warning: implicit declaration of function 'finish_ps' is invalid in C99 [-Wimplicit-function-declaration]
+  finish_ps(psfile);
+  ^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:207:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+set_extremes(psfile)
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:213:34: warning: incompatible pointer to integer conversion returning 'void *' from a function with result type 'int' [-Wint-conversion]
+  if (no_of_samples == 0) return NULL;
+                                 ^~~~
+/usr/local/lib/clang/10.0.0/include/stddef.h:89:16: note: expanded from macro 'NULL'
+#  define NULL ((void*)0)
+               ^~~~~~~~~~
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:237:1: warning: control may reach end of non-void function [-Wreturn-type]
+}
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:253:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+display_point(psfile,p)
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:264:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:279:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+draw_hyperplane(psfile,cur_node,count)
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:287:32: warning: incompatible pointer to integer conversion returning 'void *' from a function with result type 'int' [-Wint-conversion]
+  if (cur_node == NULL) return NULL;
+                               ^~~~
+/usr/local/lib/clang/10.0.0/include/stddef.h:89:16: note: expanded from macro 'NULL'
+#  define NULL ((void*)0)
+               ^~~~~~~~~~
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:290:56: warning: incompatible pointer to integer conversion returning 'void *' from a function with result type 'int' [-Wint-conversion]
+  if (l.from.x == l.to.x && l.from.y == l.to.y) return NULL;
+                                                       ^~~~
+/usr/local/lib/clang/10.0.0/include/stddef.h:89:16: note: expanded from macro 'NULL'
+#  define NULL ((void*)0)
+               ^~~~~~~~~~
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:292:5: warning: implicit declaration of function 'display_edge' is invalid in C99 [-Wimplicit-function-declaration]
+    display_edge(psfile,l, "Root",count,0);
+    ^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:294:1: warning: control may reach end of non-void function [-Wreturn-type]
+}
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:310:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+prepare_ps (psfile,title)
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:324:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:334:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+finish_ps (psfile)
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:341:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:444:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+make_box()
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:492:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:512:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+display_edge (psfile, e, label,count,reverse)
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:553:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:570:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+erase_hyperplane(psfile,cur_node,count)
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:607:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:767:3: warning: implicit declaration of function 'read_subtree' is invalid in C99 [-Wimplicit-function-declaration]
+  read_subtree(root,dtree);
+  ^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:794:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+read_subtree(root,dtree)
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:808:32: warning: incompatible pointer to integer conversion returning 'void *' from a function with result type 'int' [-Wint-conversion]
+  if (cur_node == NULL) return NULL;
+                               ^~~~
+/usr/local/lib/clang/10.0.0/include/stddef.h:89:16: note: expanded from macro 'NULL'
+#  define NULL ((void*)0)
+               ^~~~~~~~~~
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:830:36: warning: incompatible pointer to integer conversion returning 'void *' from a function with result type 'int' [-Wint-conversion]
+      if (cur_node == NULL) return NULL;
+                                   ^~~~
+/usr/local/lib/clang/10.0.0/include/stddef.h:89:16: note: expanded from macro 'NULL'
+#  define NULL ((void*)0)
+               ^~~~~~~~~~
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:849:1: warning: control may reach end of non-void function [-Wreturn-type]
+}
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:875:11: warning: implicit declaration of function 'psdelay' is invalid in C99 [-Wimplicit-function-declaration]
+          psdelay(psfile,wait_time);
+          ^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:902:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+psdelay(out,t)
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:907:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+/home/charles/git/sklearn-oblique-tree/oc1_source/display.c:927:10: warning: address of stack memory associated with local variable 'label' returned [-Wreturn-stack-address]
+  return(label);
+         ^~~~~
+38 warnings generated.

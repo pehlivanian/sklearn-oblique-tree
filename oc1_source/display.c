@@ -210,7 +210,7 @@ set_extremes(psfile)
   int i;
   double x,y,x1,x2,y1,y2,xrange,yrange;
   
-  if (no_of_samples == 0) return;
+  if (no_of_samples == 0) return NULL;
   
   xmax = xmin = train_points[1]->dimension[1];
   ymax = ymin = train_points[1]->dimension[2];
@@ -284,10 +284,10 @@ draw_hyperplane(psfile,cur_node,count)
   EDGE l,find_edge();
   int i;
   
-  if (cur_node == NULL) return;
+  if (cur_node == NULL) return NULL;
   
   l = find_edge(cur_node);
-  if (l.from.x == l.to.x && l.from.y == l.to.y) return;
+  if (l.from.x == l.to.x && l.from.y == l.to.y) return NULL;
   if (strlen(cur_node->label) == 0)
     display_edge(psfile,l, "Root",count,0);
   else display_edge(psfile,l, cur_node->label,count,0);
@@ -387,7 +387,7 @@ EDGE find_edge(cur_node)
     {
       p = intersection(cur_node->coefficients,cur_ancestor->coefficients);
       
-      if ( p.x != HUGE && p.y != HUGE 
+      if ( p.x != HUGE_VAL && p.y != HUGE_VAL 
 	  && onedge(p,cur_ancestor->edge)
 	  && correct_side(p,cur_node))
 	{
@@ -624,7 +624,7 @@ struct endpoint intersection(c1,c2)
     
   denom = c2[2] * c1[1] - c2[1] * c1[2];
   if (!denom)
-    { p.x = HUGE; p.y = HUGE; return(p);}
+    { p.x = HUGE_VAL; p.y = HUGE_VAL; return(p);}
   
   p.x = (c2[3] * c1[2] - c2[2] * c1[3]) / denom;
   p.y = (c2[1] * c1[3] - c2[3] * c1[1]) / denom;
@@ -805,7 +805,7 @@ read_subtree(root,dtree)
     }
   else cur_node = read_hp(dtree);
   
-  if (cur_node == NULL) return;
+  if (cur_node == NULL) return NULL;
   
   if (isleftchild(cur_node,root))
     {
@@ -827,7 +827,7 @@ read_subtree(root,dtree)
 	}
       else
 	cur_node = read_hp(dtree);
-      if (cur_node == NULL) return;
+      if (cur_node == NULL) return NULL;
     }
 
   if (isrightchild(cur_node,root))
@@ -979,7 +979,7 @@ struct tree_node *read_hp(dtree)
 
   while (TRUE)
     {
-      if ((fscanf(dtree,"%f %c",&temp,&c)) != 2)
+      if ((fscanf(dtree,"%lf %c",&temp,&c)) != 2)
 	error("Read_Hp: Invalid/Absent hyperplane equation.");
       if (c == 'x')
 	{ 

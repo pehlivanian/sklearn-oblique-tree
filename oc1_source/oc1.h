@@ -17,6 +17,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <float.h>
 
 /* Change the following statement to use a different impurity measure. */
 
@@ -53,7 +54,7 @@
 
 #define MAX_COEFFICIENT 	1.0
 #define MAX_NO_OF_ATTRIBUTES	4020
-#define MAX_DT_DEPTH 		50 
+#define MAX_DT_DEPTH 		100
 #define MAX_NO_OF_STAGNANT_PERTURBATIONS 	10
 #define MAX_CART_CYCLES         100
 

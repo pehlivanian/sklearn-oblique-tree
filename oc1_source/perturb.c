@@ -91,9 +91,14 @@ double cart_perturb(cur_points,cur_no_of_points, cur_coeff,cur_error)
       reset_counts();
       for (i=1;i<=cur_no_of_points;i++)
 	if (cur_points[i]->val - lambda * (cur_points[i]->dimension[cur_coeff]
-					   + mygamma) < 0)
+					   + mygamma) < 0) {
 	  left_count[cur_points[i]->category]++;
-	else right_count[cur_points[i]->category]++;
+	  // printf("left_count: %d", left_count[cur_points[i]->category]);
+	}
+	else {
+	  right_count[cur_points[i]->category]++;
+	  // printf("right_count: %d", right_count[cur_points[i]->category]);
+	}
       
       d_dim_error = compute_impurity(cur_no_of_points);
  
@@ -160,8 +165,14 @@ double cart_perturb_constant(cur_points,cur_no_of_points,cur_error)
   reset_counts();
   for (i=1;i<=cur_no_of_points;i++)
     {
-      if (cur_points[i]->val-lambda < 0) left_count[cur_points[i]->category]++;
-      else right_count[cur_points[i]->category]++;
+      if (cur_points[i]->val-lambda < 0) {
+	left_count[cur_points[i]->category]++;
+	// printf("left_count: %d", left_count[cur_points[i]->category]);
+      }
+      else {
+	right_count[cur_points[i]->category]++;
+	// printf("right_count: %d", right_count[cur_points[i]->category]);
+      }
     }
 
   cur_error = compute_impurity(cur_no_of_points);
@@ -249,8 +260,14 @@ double suggest_perturbation(cur_points,cur_no_of_points,cur_coeff,cur_error)
       
       if (cur_coeff == no_of_coeffs) temp_val[i] += changeinval;
       else temp_val[i] += changeinval * cur_points[i]->dimension[cur_coeff];
-      if (temp_val[i] < 0) left_count[cur_points[i]->category]++;
-      else right_count[cur_points[i]->category]++;
+      if (temp_val[i] < 0) { 
+	left_count[cur_points[i]->category]++;
+	// printf("left_count: %d\n", left_count[cur_points[i]->category]);
+      }
+      else {
+	right_count[cur_points[i]->category]++;
+	// printf("right_count: %d\n", right_count[cur_points[i]->category]);
+      }
     }
 
   d_dim_error = compute_impurity(cur_no_of_points);
@@ -349,8 +366,14 @@ double perturb_randomly(cur_points,cur_no_of_points,cur_error,cur_label)
     {
       temp_val[i] *= alpha;
       temp_val[i] += cur_points[i]->val;
-      if (temp_val[i] < 0) left_count[cur_points[i]->category]++;
-      else right_count[cur_points[i]->category]++;
+      if (temp_val[i] < 0) {
+	left_count[cur_points[i]->category]++;
+	// printf("left_count: %d\n", left_count[cur_points[i]->category]);
+	       }
+	else {
+	  right_count[cur_points[i]->category]++;
+	  // printf("right_count: %d\n", right_count[cur_points[i]->category]);
+	}
     }
   
   d_dim_error = compute_impurity(cur_no_of_points);
@@ -458,6 +481,9 @@ double linear_split(no_of_eff_points)
 	{
 	  left_count[candidates[j].cat]++;
 	  right_count[candidates[j].cat]--;
+	  // printf("category: %d", candidates[j].cat);
+	  // printf("left_count : %d", left_count[candidates[j].cat]);
+	  // printf("right_count: %d", right_count[candidates[j].cat]);
 	}
 
       i = to;

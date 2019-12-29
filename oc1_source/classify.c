@@ -112,7 +112,7 @@ print_point(out,cur_point,unlabeled)
 {
   int i;
   
-  if (out == NULL || cur_point == NULL) return;
+  if (out == NULL || cur_point == NULL) return NULL;
   
   for (i=1;i<=no_of_dimensions;i++)
     fprintf(out,"%f\t",cur_point->dimension[i]);

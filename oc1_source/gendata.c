@@ -43,7 +43,7 @@ void srand48();
 /*			myrandom (util.c)				*/
 /* Is called by modules :	none.					*/
 /************************************************************************/
-main(argc,argv)
+int main(argc,argv)
      int argc;
      char *argv[];
 {
@@ -123,7 +123,8 @@ main(argc,argv)
             no_of_dimensions, no_of_categories);
   
   points_array = allocate_point_array(points_array,no_of_samples,0);
-  
+  point_count = ivector(1,no_of_categories);
+
   for (i=1;i<=no_of_samples;i++)
     for (j=1;j<= no_of_dimensions;j++)
       points_array[i]->dimension[j] = myrandom(above,below);
@@ -155,18 +156,19 @@ main(argc,argv)
   
   if (verbose && !unlabeled)
     {
-      point_count = ivector(1,no_of_categories);
       for (i=1;i<=no_of_categories;i++) point_count[i]=0;
       for (i=1;i<=no_of_samples;i++)
 	point_count[points_array[i]->category]++;
       
       for (i=1;i<=no_of_categories;i++)
 	fprintf(stderr,"\tCategory %d : %d points\n",i,point_count[i]);
+
     }
   
   if (strlen(test_data)) printf("Instances written to %s.\n", test_data);
+
+  free_ivector(point_count, 1, no_of_categories);
   
-  free_ivector(point_count,1,no_of_categories);
 }
 
 /************************************************************************/

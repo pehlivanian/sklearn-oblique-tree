@@ -31,7 +31,8 @@
 /*                      in the package.	                        */
 /****************************************************************/	
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <string.h>
 
 /************************************************************************/
 /* Module name : MyLog2                                                  */
@@ -62,7 +63,7 @@ double myabs(x)
 /* Functionality :	Displays an error message, and exits execution	*/
 /*			normally.					*/
 /************************************************************************/
-error(error_text)
+void error(error_text)
      char error_text[];
 {
   printf("Runtime Error.\n%s.\nExecution Terminated.\n",error_text);
@@ -212,7 +213,7 @@ double *dvector(nl,nh)
 /*          work well always. This should not be a major problem in most*/
 /*          cases, however.                                             */
 /************************************************************************/
-free_ivector(v,nl,nh)
+void free_ivector(v,nl,nh)
      int *v,nl,nh;
 {
   free((char*)(v+nl));
@@ -227,7 +228,7 @@ free_ivector(v,nl,nh)
 /*          work well always. This should not be a major problem in most*/
 /*          cases, however.                                             */
 /************************************************************************/
-free_vector(v,nl,nh)
+void free_vector(v,nl,nh)
      int nl,nh;
      double *v;
 {
@@ -243,7 +244,7 @@ free_vector(v,nl,nh)
 /*          work well always. This should not be a major problem in most*/
 /*          cases, however.                                             */
 /************************************************************************/
-free_dvector(v,nl,nh)
+void free_dvector(v,nl,nh)
      int nl,nh;
      double *v;
 {
@@ -260,7 +261,7 @@ free_dvector(v,nl,nh)
 /* Is called by modules :	oblique_split (mktree.c)		*/
 /*				perturb_randomly (perturb.c)		*/
 /************************************************************************/
-generate_random_hyperplane(array_name,length,max_value)
+void generate_random_hyperplane(array_name,length,max_value)
      double *array_name,max_value;
      int length;
 {
@@ -283,10 +284,12 @@ generate_random_hyperplane(array_name,length,max_value)
 /*                 options are used, this module is activated.          */
 /* Parameters : pname: name of the program whose options are to be shown*/           
 /************************************************************************/
-usage(pname)
+void usage(pname)
      char *pname;
 {
-  if (!strcmp(pname, "mktree"))
+  char *found;
+  found = strstr(pname, "make_tree");
+  if (found != NULL)
     {
       fprintf(stderr,"\n\nUsage: mktree aA:b:Bc:d:D:i:j:Kl:m:M:n:Nop:r:R:s:t:T:uvV:");
       fprintf(stderr,"\nOptions :");
@@ -316,7 +319,7 @@ usage(pname)
       fprintf(stderr,"\n    -N : No normalization at each tree node.");
       fprintf(stderr,"\n    -o : Only oblique splits.");
       fprintf(stderr,"\n    -p<portion of training set to be used in pruning>");
-      fprintf(stderr,"\n      (Default=0.10 i.e., 10%)");
+      fprintf(stderr,"\n      (Default=0.10 i.e., 10%%)");
       fprintf(stderr,"\n    -r<#restarts for the perturbation alg.>");
       fprintf(stderr,"\n      (Default=20)");
       fprintf(stderr,"\n    -R<cycle_count>");
@@ -330,8 +333,9 @@ usage(pname)
       fprintf(stderr,"\n    -V<#partitions for cross validation>  (Default=0)");
       fprintf(stderr,"\n       (-1 : leave-one-out, 0 = no CV)");
     }
-  
- if (!strcmp(pname,"display"))
+
+  found = strstr(pname, "display");
+  if (found != NULL)
     {
       fprintf (stderr,"\n\nUsage : display -d:D:eh:o:t:T:vw:x:X:y:Y:");
       fprintf (stderr,"\nOptions :");
@@ -358,8 +362,9 @@ usage(pname)
       fprintf (stderr,"\n    -Y<maximum y coord for the display>");
       fprintf (stderr,"\n      (Default=calculated from point set or 1)");
     }
-  
-  if (!strcmp(pname,"gendata"))
+
+  found = strstr(pname, "generate_data");
+  if (found != NULL)
     {
       fprintf (stderr,"\n\nUsage : gendata -a:b:c:d:D:n:N:o:s:t:T:uv");
       fprintf (stderr,"\nOptions :");

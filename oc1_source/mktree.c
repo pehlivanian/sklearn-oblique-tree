@@ -1116,7 +1116,7 @@ FILE * out;
 char * label; {
   struct tree_node * temp_node, * create_tree_node();
 
-  if (out == NULL) return;
+  if (out == NULL) return NULL;
   temp_node = create_tree_node();
   strcpy(temp_node -> label, label);
   write_hp(temp_node, out);
