@@ -93,9 +93,9 @@ double myrandom(above,below)
 
 /************************************************************************/
 /* Module name : Average                                                */
-/* Functionality : Computes the average of a double array.               */
-/* Parameters: a: double array, indices in the range 1,n                 */
-/*             n: length of the double array.                            */
+/* Functionality : Computes the average of a double array.              */
+/* Parameters: a: double array, indices in the range 1,n                */
+/*             n: length of the double array.                           */
 /************************************************************************/
 double average(a,n)
      double *a;

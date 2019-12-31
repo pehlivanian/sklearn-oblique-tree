@@ -48,5 +48,5 @@ dist/
 oc1_source/build/
 oc1_source/data/
 oc1_source/oc1.log
-sklearn_oblique_tree.egg-info/
 sklearn_oblique_tree/__pycache__/
+sklearn_oblique_tree.egg-info/

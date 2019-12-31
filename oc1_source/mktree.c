@@ -454,36 +454,36 @@ char * dt_file; {
     }
   }
 
-//  write_header(animationfile);
+  write_header(animationfile);
 
-//  /* divide the training instances into a training set and a pruning set*/
-//  no_of_ptest_points = (int)(no_of_points * prune_portion);
-//  if (no_of_ptest_points) {
-//    no_of_train_points = no_of_points - no_of_ptest_points;
-//    if (verbose) printf("%d randomly chosen instances kept away for pruning.\n\n",
-//      no_of_ptest_points);
-//    /* "randomly chosen" because the points are shuffled in Read_Data. */
-//
-//    train_points = allocate_point_array(train_points, no_of_train_points, 0);
-//    for (i = 1; i <= no_of_train_points; i++) {
-//      for (j = 1; j <= no_of_dimensions; j++)
-//        train_points[i] -> dimension[j] = points[i] -> dimension[j];
-//      train_points[i] -> category = points[i] -> category;
-//      train_points[i] -> val = points[i] -> val;
-//    }
-//
-//    ptest_points = allocate_point_array(ptest_points, no_of_ptest_points, 0);
-//    for (i = no_of_train_points + 1; i <= no_of_points; i++) {
-//      k = i - no_of_train_points;
-//      for (j = 1; j <= no_of_dimensions; j++)
-//        ptest_points[k] -> dimension[j] = points[i] -> dimension[j];
-//      ptest_points[k] -> category = points[i] -> category;
-//      ptest_points[k] -> val = points[i] -> val;
-//    }
-//  } else {
-//    train_points = points;
-//    no_of_train_points = no_of_points;
-//  }
+  /* divide the training instances into a training set and a pruning set*/
+  no_of_ptest_points = (int)(no_of_points * prune_portion);
+  if (no_of_ptest_points) {
+    no_of_train_points = no_of_points - no_of_ptest_points;
+    if (verbose) printf("%d randomly chosen instances kept away for pruning.\n\n",
+      no_of_ptest_points);
+    /* "randomly chosen" because the points are shuffled in Read_Data. */
+
+    train_points = allocate_point_array(train_points, no_of_train_points, 0);
+    for (i = 1; i <= no_of_train_points; i++) {
+      for (j = 1; j <= no_of_dimensions; j++)
+        train_points[i] -> dimension[j] = points[i] -> dimension[j];
+      train_points[i] -> category = points[i] -> category;
+      train_points[i] -> val = points[i] -> val;
+    }
+
+    ptest_points = allocate_point_array(ptest_points, no_of_ptest_points, 0);
+    for (i = no_of_train_points + 1; i <= no_of_points; i++) {
+      k = i - no_of_train_points;
+      for (j = 1; j <= no_of_dimensions; j++)
+        ptest_points[k] -> dimension[j] = points[i] -> dimension[j];
+      ptest_points[k] -> category = points[i] -> category;
+      ptest_points[k] -> val = points[i] -> val;
+    }
+  } else {
+    train_points = points;
+    no_of_train_points = no_of_points;
+  }
   train_points = points;
   no_of_train_points = no_of_points;
 
@@ -498,27 +498,27 @@ char * dt_file; {
     print_log_and_exit();
   } else root -> parent = NULL;
 
-//  /* Prune.*/
-//  if (prune_portion != 0)
-//    proot = prune(root, ptest_points, no_of_ptest_points);
-//  else proot = root;
+  /* Prune.*/
+  if (prune_portion != 0)
+    proot = prune(root, ptest_points, no_of_ptest_points);
+  else proot = root;
     proot = root;
 
   /* Write the trees to files. */
-//  if (strlen(dt_file)) {
-//    write_tree(proot, dt_file);
-//    if (proot == root) /* No pruning was done. */
-//      printf("Unpruned decision tree written to %s.\n", dt_file);
-//    else {
-//      char temp_str[LINESIZE];
-//
-//      printf("Pruned decision tree written to %s.\n", dt_file);
-//      sprintf(temp_str, "%s.unpruned", dt_file);
-//      write_tree(root, temp_str);
-//      printf("Unpruned decision tree written to %s.\n", temp_str);
-//
-//    }
-//  }
+  if (strlen(dt_file)) {
+    write_tree(proot, dt_file);
+    if (proot == root) /* No pruning was done. */
+      printf("Unpruned decision tree written to %s.\n", dt_file);
+    else {
+      char temp_str[LINESIZE];
+
+      printf("Pruned decision tree written to %s.\n", dt_file);
+      sprintf(temp_str, "%s.unpruned", dt_file);
+      write_tree(root, temp_str);
+      printf("Unpruned decision tree written to %s.\n", temp_str);
+
+    }
+  }
 
   root = proot;
   return (root);
