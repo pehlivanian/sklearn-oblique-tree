@@ -128,8 +128,10 @@ int main(argc,argv)
   for (i=1;i<=no_of_samples;i++)
     for (j=1;j<= no_of_dimensions;j++)
       points_array[i]->dimension[j] = myrandom(above,below);
-  
-  printf("%d instances generated.\n",no_of_samples);
+
+  if (verbose)
+    fprintf(stderr,"%d instances generated.\n", no_of_samples);
+
   if ((outfile = fopen(test_data,"w")) == NULL) outfile = stdout;
   
   if (unlabeled != TRUE)

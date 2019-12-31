@@ -1,16 +1,18 @@
 cmake_minimum_required(VERSION 3.7.0 FATAL_ERROR)
 project(generate_data LANGUAGES C)
 
-set(ADDL_LINK_FLAGS "-lm")
-set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${ADDL_LINK_FLAGS}")
-
-# Extras
+# C compiler information
 message(STATUS "Is the C compiler loaded? ${CMAKE_C_COMPILER_LOADED}")
 if(CMAKE_C_COMPILER_LOADED)
   message(STATUS "The C compiler ID is: ${CMAKE_C_COMPILER_ID}")
   message(STATUS "Is the C from GNU? ${CMAKE_COMPILER_IS_GNUCC}")
   message(STATUS "The C compiler version is: ${CMAKE_C_COMPILER_VERSION}")
 endif()
+
+set(ADDL_COMPILE_FLAGS "-g -O0")
+set(ADDL_LINK_FLAGS "-lm")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ADDL_COMPILE_FLAGS}")
+set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${ADDL_LINK_FLAGS}")
 
 add_library(otreeobjs
 	OBJECT
